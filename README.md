@@ -18,4 +18,4 @@ Classes:
 
 Link to demo: https://drive.google.com/file/d/1JU-1YBA0ZVsvVS6z2WracoNZoDQrzOUV/view?usp=drive_link
 
-How to run: javac *.java --> java MassiveMotion.java MassiveMotion.txt
+How to run: cd project02-massivemotion-JaydenJChin -> cd src -> javac *.java --> java MassiveMotion.java MassiveMotion.txt

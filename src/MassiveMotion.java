@@ -1,5 +1,5 @@
 //@name Jayden
-//@date and version [10/20/2025 version 1.00]
+//@date and version [10/30/2025 version 1.01]
 //CS245 Project 2
 
 import java.io.*;
@@ -15,18 +15,14 @@ public class MassiveMotion extends JPanel implements ActionListener {
 
     protected Timer tm;
 
-    // TODO: Consider removing the next two lines (coordinates for two balls) **DONE**
     protected int window_size_x;
     protected int window_size_y;
 
-    // Star properties from properties file **DONE**
     protected int star_position_x;
     protected int star_position_y;
     protected int star_size;
     protected int star_velocity_x;
     protected int star_velocity_y;
-
-    // Timer delay **DONE**
 
     protected int timer_delay;
 
@@ -49,8 +45,6 @@ public class MassiveMotion extends JPanel implements ActionListener {
     * @throws RuntimeException if there is no file or cannot be read from file and abandons execution
     */
     public MassiveMotion(String propfile) {
-    // public MassiveMotion() { **DONE**
-        // TODO: insert your code to read from configuration file here. **DONE**
         Properties prop = new Properties();
 
         try(FileInputStream file = new FileInputStream(propfile)){
@@ -92,9 +86,8 @@ public class MassiveMotion extends JPanel implements ActionListener {
             throw new RuntimeException("Error: Check Property File, Abandoning Execution");
         } 
 
-        tm = new Timer(timer_delay, this); // TODO: Replace the first argument with delay with value from config file. **DONE**
+        tm = new Timer(timer_delay, this);
 
-        // TODO: Consider removing the next two lines (coordinates) for random starting locations. **DONE**
         celestialBodies.add(new CelestialBody(star_position_x, star_position_y, star_size, star_velocity_x, star_velocity_y, true));
     }
 
@@ -108,9 +101,8 @@ public class MassiveMotion extends JPanel implements ActionListener {
     * @param g Graphics used for drawing and coloring the star and celestial body
     */
     public void paintComponent(Graphics g) {
-        super.paintComponent(g); // Probably best you leave this as is.
+        super.paintComponent(g);
 
-        // TODO: Paint each ball. Here's how to paint two balls, one after the other:
         for(int i = 0; i < celestialBodies.size(); i++){
             CelestialBody body = celestialBodies.get(i);
             if(body.isStar()){
@@ -122,8 +114,6 @@ public class MassiveMotion extends JPanel implements ActionListener {
             g.fillOval(body.getX(), body.getY(), body.getSize(), body.getSize());
         }
 
-
-        // Recommend you leave the next line as is
         tm.start();
     }
 
@@ -136,15 +126,12 @@ public class MassiveMotion extends JPanel implements ActionListener {
     */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        // TODO: Change the location of each ball. Here's an example of them moving across the screen:
-        //       ... but to be clear, you should change this.
 
         for(int i = celestialBodies.size() - 1; i >= 0; i--){
             CelestialBody body = celestialBodies.get(i);
             body.x += body.vx;
             body.y += body.vy;
 
-        // These two "if" statements keep the balls on the screen in case they go off one side.
             if(body.x < 0 || body.x > window_size_x || body.y < 0 || body.y > window_size_y){
                 System.out.println("Removed Celestial Body at index " + i + " position (" + body.x + "," + body.y + ")"); //non visual verification of working for question 1
                 celestialBodies.remove(i);
@@ -185,7 +172,6 @@ public class MassiveMotion extends JPanel implements ActionListener {
             celestialBodies.add(newBody);
         }
 
-        // Keep this at the end of the function (no matter what you do above):
         repaint();
     }
 
@@ -211,11 +197,10 @@ public class MassiveMotion extends JPanel implements ActionListener {
     public static void main(String[] args) {
         System.out.println("Massive Motion starting...");
         MassiveMotion mm = new MassiveMotion(args[0]);
-        // MassiveMotion mm = new MassiveMotion(); **DONE**
 
         JFrame jf = new JFrame();
         jf.setTitle("Massive Motion");
-        jf.setSize(mm.window_size_x, mm.window_size_y); // TODO: Replace with the size from configuration! **DONE**
+        jf.setSize(mm.window_size_x, mm.window_size_y);
         jf.add(mm);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,5 +1,5 @@
 //@name Jayden
-//@date and version [10/20/2025 version 1.00]
+//@date and version [10/31/2025 version 1.01]
 //CS245 Project 2
 
 public class ArrayList<T> implements List<T>{
@@ -150,7 +150,7 @@ public class ArrayList<T> implements List<T>{
     /** 
     * iterator method
     * Returns a new iterator over the elements in the list.
-    * @return null for iterator
+    * @return a new index in the ListIterator list.
     */   
     public Iterator<T> iterator(){
         return new ListIterator();

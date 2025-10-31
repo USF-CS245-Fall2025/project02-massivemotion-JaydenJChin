@@ -1,5 +1,5 @@
 //@name Jayden
-//@date and version [10/30/2025 version 1.01]
+//@date and version [10/31/2025 version 1.02]
 //CS245 Project 2
 
 import java.io.*;
@@ -67,19 +67,72 @@ public class MassiveMotion extends JPanel implements ActionListener {
 
             if(typeList.equals("arraylist")){
                 celestialBodies = new ArrayList<CelestialBody>();
+                System.out.println("ArrayList in use");
+
             } 
             else if(typeList.equals("single")){
                 celestialBodies = new LinkedList<CelestialBody>();
+                System.out.println("LinkedList in use");
+
             } 
             else if(typeList.equals("double")){
                 celestialBodies = new DoublyLinkedList<CelestialBody>();
+                System.out.println("DoublyLinkedList in use");
+
             } 
             else if(typeList.equals("dummyhead")){
                 celestialBodies = new DummyHeadLinkedList<CelestialBody>();
+                System.out.println("DummyHeadLinkedList in use");
+
             } 
             else{
                 throw new RuntimeException("Invalid list_type in properties");
             }
+
+            //start
+
+            try {
+                // Add two dummy celestial bodies
+                celestialBodies.add(new CelestialBody(1, 2, 3, 4, 5, false));
+                celestialBodies.add(new CelestialBody(5, 4, 3, 2, 1, false));
+
+                // Check add + size
+                if(celestialBodies.size() == 2){
+                    System.out.println("Add and size method WORK");
+                } 
+                else{
+                    System.out.println("Add and size method FAIL");
+                }
+
+                // Check get
+                CelestialBody testBody = celestialBodies.get(1);
+                if(testBody != null){
+                    System.out.println("Get method WORK");
+                } 
+                else{
+                    System.out.println("Get test method FAIL");
+                }
+
+                // Check remove
+                celestialBodies.remove(0);
+                if (celestialBodies.size() == 1){
+                    System.out.println("Remove method WORK");
+                    System.out.println("");
+                } 
+                else{
+                    System.out.println("Remove method FAIL");
+                    System.out.println("");
+
+                }
+
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+
+
+        //end
+
 
         } 
         catch (IOException e){

@@ -1,3 +1,7 @@
+//@name Jayden
+//@date and version [10/20/2025 version 1.00]
+//CS245 Project 2
+
 public class ArrayList<T> implements List<T>{
 
     private class ListIterator implements Iterator<T>{

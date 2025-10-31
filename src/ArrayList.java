@@ -59,7 +59,7 @@ public class ArrayList<T> implements List<T>{
     * Grows array and multiplies 2 if the maximum capacity has reached.
     * Copies old ArrayList into the new one.
     */ 
-    protected void grow_array(){
+    private void grow_array(){
         T[] new_arr = (T[]) new Object[arr.length * 2];
         for(int i = 0; i < arr.length; i++){
             new_arr[i] = arr[i];
